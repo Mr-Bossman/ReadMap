@@ -1,7 +1,6 @@
 #include <cmath>
 #include <cstdint>
 #include <cstring>
-#include <endian.h>
 #include <iostream>
 #include <iterator>
 #include <sstream>
@@ -12,6 +11,10 @@ extern "C" {
 #include <png.h>
 #include <zlib.h>
 }
+
+#ifndef htobe32
+#define htobe32(x) __builtin_bswap32(x)
+#endif
 
 /* Print PPM image format */
 static std::string print_sqr_ppm(const std::vector<uint8_t[3]>& pix);

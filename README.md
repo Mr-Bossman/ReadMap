@@ -14,8 +14,14 @@ Run with no inputs for a prompt.
 ```
 To compile
 
+For Linux:
 ```bash
 $ g++  readmap.cpp -lm -lz -lpng  -o readmap
+```
+
+For Windows on Linux:
+```bash
+$ ./make_release.sh
 ```
 
 Licenced under the MIT Licence or GPL2.0
