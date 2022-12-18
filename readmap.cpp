@@ -83,7 +83,7 @@ int main(int argc, char** argv) {
 	/* Read open gziped map file */
 	auto gz = gzdopen(fileno(in_fp), "r");
 	if (gz == NULL) {
-		std::cerr << "Could not open stdin" << std::endl;
+		std::cerr << "Could not open output file." << std::endl;
 		return -1;
 	}
 	/* Read whole file into input_str*/
@@ -91,12 +91,14 @@ int main(int argc, char** argv) {
 		input_str += static_cast<char>(tmp);
 
 	gzclose(gz);
+	fclose(in_fp);
 
 	errnum = MCmap_to_vec(input_str, RGBpix_map, sz);
 	if (errnum != 0)
 		return errnum - 2;
 	/* std::cout << print_sqr_ppm(RGBpix_map); */
 	errnum = libpng_export(out_fp, sz, sz, RGBpix_map);
+	fclose(out_fp);
 	if (errnum != 0)
 		return errnum - 3;
 	return 0;

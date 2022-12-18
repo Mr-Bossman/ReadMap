@@ -16,7 +16,7 @@ To compile
 
 For Linux:
 ```bash
-$ g++  readmap.cpp -lm -lz -lpng  -o readmap
+$ g++  readmap.cpp --static -lm -lz -lpng -o readmap
 ```
 
 For Windows on Linux:
